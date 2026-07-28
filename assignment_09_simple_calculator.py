@@ -68,3 +68,81 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+# =============================================================================
+# PROGRAMMING FUNDAMENTALS — Assignment 9
+# =============================================================================
+#
+# TASK: Console-Based Simple Calculator
+# =============================================================================
+
+def add(a, b):
+    """Returns the sum of a and b."""
+    return a + b
+
+
+def subtract(a, b):
+    """Returns the difference of a and b."""
+    return a - b
+
+
+def multiply(a, b):
+    """Returns the product of a and b."""
+    return a * b
+
+
+def divide(a, b):
+    """Returns a / b rounded to 2 decimal places. Raises ZeroDivisionError if b is 0."""
+    if b == 0:
+        raise ZeroDivisionError("Cannot divide by zero.")
+    return round(a / b, 2)
+
+
+def modulus(a, b):
+    """Returns the remainder of a divided by b. Raises ZeroDivisionError if b is 0."""
+    if b == 0:
+        raise ZeroDivisionError("Cannot divide by zero.")
+    return a % b
+
+
+def exponentiate(a, b):
+    """Returns a raised to the power of b."""
+    return a ** b
+
+
+def get_two_numbers():
+    """Prompts for and returns two numbers from the user."""
+    first = float(input("Enter first number : "))
+    second = float(input("Enter second number: "))
+    return first, second
+
+
+def format_result(value):
+    """Formats a numeric result without a trailing .0 for whole numbers."""
+    return f"{value:g}"
+
+
+def print_menu():
+    """Displays the calculator menu."""
+    print("\n============================")
+    print("     SIMPLE CALCULATOR")
+    print("============================")
+    print("1. Addition")
+    print("2. Subtraction")
+    print("3. Multiplication")
+    print("4. Division")
+    print("5. Modulus")
+    print("6. Exponentiation")
+    print("7. Quit")
+
+
+def main():
+    operations = {
+        "1": ("+", add),
+        "2": ("-", subtract),
+        "3": ("*", multiply),
+        "4": ("/", divide),
+        "5": ("%", modulus),
+        "6": ("**", exponentiate),
+    }
+
+    while
