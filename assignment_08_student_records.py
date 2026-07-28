@@ -90,3 +90,77 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+# =============================================================================
+
+
+def add_student(students):
+    """Prompts for a student's name, ID, and scores, then adds the record."""
+    name = input("Student name: ")
+    id_input = input("Student ID: ")
+
+    if not id_input.isdigit():
+        print("Error: Student ID must be a number.")
+        return
+
+    student_id = int(id_input)
+
+    # Check for duplicate ID
+    for student in students:
+        if student["id"] == student_id:
+            print(f"Error: A student with ID {student_id} already exists.")
+            return
+
+    num_scores_input = input("How many scores? ")
+    if not num_scores_input.isdigit() or int(num_scores_input) <= 0:
+        print("Error: Number of scores must be a positive integer.")
+        return
+
+    num_scores = int(num_scores_input)
+    scores = []
+    for i in range(num_scores):
+        score = float(input(f"Enter score {i + 1}: "))
+        scores.append(score)
+
+    student = {
+        "name": name,
+        "id": student_id,
+        "scores": scores
+    }
+    students.append(student)
+    print(f'Student "{name}" added successfully.')
+
+
+def calculate_average(scores):
+    """Returns the average of a list of scores, rounded to 2 decimal places."""
+    total = 0
+    for score in scores:
+        total += score
+    return round(total / len(scores), 2)
+
+
+def display_all_students(students):
+    """Prints a formatted table of all students: name, ID, scores, average."""
+    if not students:
+        print("No students have been added yet.")
+        return
+
+    print("-" * 60)
+    print(f"{'Name':<15}{'ID':<12}{'Scores':<20}{'Average':<10}")
+    print("-" * 60)
+
+    for student in students:
+        scores_str = ", ".join(format_score(s) for s in student["scores"])
+        average = calculate_average(student["scores"])
+        print(f"{student['name']:<15}{student['id']:<12}{scores_str:<20}{average:<10}")
+
+    print("-" * 60)
+
+
+def format_score(score):
+    """Formats a score without a trailing .0 for whole numbers."""
+    return f"{score:g}"
+
+
+def find_student_by_id(students, student_id):
+    """Returns the student dict matching the given ID, or None if not found."""
+    for student in
